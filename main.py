@@ -4,7 +4,7 @@ from flask import Flask, request
 
 from transformers import pipeline
 
-sentiment_analysis = pipeline(model='rabindralamsal/BERTsent')
+sentiment_analysis = pipeline("sentiment-analysis", model="rabindralamsal/BERTsent")
 
 app = Flask(__name__)
 
