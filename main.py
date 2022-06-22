@@ -4,8 +4,9 @@ from flask import Flask, request
 
 from transformers import pipeline
 
-sentiment_analysis = pipeline("sentiment-analysis", model="rabindralamsal/BERTsent")
-
+#sentiment_analysis = pipeline("sentiment-analysis", model="rabindralamsal/BERTsent")
+model_path = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
+sentiment_analysis = pipeline("sentiment-analysis", model=model_path, tokenizer=model_path)
 app = Flask(__name__)
 
 @app.route("/detect_sentiment", methods=['POST'])
