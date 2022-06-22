@@ -6,7 +6,7 @@ from transformers import pipeline
 
 #sentiment_analysis = pipeline("sentiment-analysis", model="rabindralamsal/BERTsent")
 model_path = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
-sentiment_analysis = pipeline("sentiment-analysis", model=model_path, tokenizer=model_path)
+sentiment_analysis = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
 app = Flask(__name__)
 
 @app.route("/detect_sentiment", methods=['POST'])
