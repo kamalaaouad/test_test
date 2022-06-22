@@ -2,8 +2,23 @@ import json
 
 from flask import Flask, request
 
+from transformers import pipeline
+
+sentiment_analysis = pipeline("sentiment-analysis", model='rabindralamsal/BERTsent')
+
 app = Flask(__name__)
 
+@app.route("/detect_sentiment", methods=['POST'])
+def detect_sentiment():
+    print('hello')
+    print('hello')
+    data_text = request.form.get('data_text')
+    data = request.get_json(force=True)
+    print(request.get_json())
+    print(data["data_text"])
+    res = sentiment_analysis(data["data_text"])
+    return json.dumps(res[0])
+    #return json.dumps({"meg": data_text})
 
 @app.route('/home', methods=['GET'])
 def home():
